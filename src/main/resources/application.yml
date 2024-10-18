@@ -1,1 +1,11 @@
-spring.application.name=web-library
+spring:
+  application:
+    name: web-library
+  datasource:
+    url: jdbc:postgresql://localhost:5432/web_library
+    username: sandr
+    password: 57933
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
