@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: sandr
+      POSTGRES_PASSWORD: 57933
+      POSTGRES_DB: web_library
+    ports:
+      - "5432:5432"
+    volumes:
+      - web_library_data:/var/lib/postgresql/data
+
+volumes:
+  web_library_data:
