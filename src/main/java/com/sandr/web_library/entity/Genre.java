@@ -1,10 +1,9 @@
 package com.sandr.web_library.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,6 +20,6 @@ public class Genre {
     private int id;
     private String name;
 
-    @ManyToMany(mappedBy = "genres")
-    Set<Book> books = new HashSet<Book>();
+    @ManyToMany(mappedBy = "genres", fetch = FetchType.LAZY) //по умолчанию Lazy
+    List<Book> books = new ArrayList<>();
 }

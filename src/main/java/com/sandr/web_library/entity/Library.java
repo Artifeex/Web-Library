@@ -19,12 +19,6 @@ public class Library {
 
     private String name;
 
-    private String country;
-
-    private String city;
-
-    private String street;
-
-    @Column(name = "postal_code")
-    private String postalCode;
+    @Embedded
+    private Address address;
 }

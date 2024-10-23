@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentMap;
 @SpringBootApplication
 public class WebLibraryApplication {
 
-	public static void main(String[] args) throws CloneNotSupportedException {
+	public static void main(String[] args) {
 		SpringApplication.run(WebLibraryApplication.class, args);
 	}
 

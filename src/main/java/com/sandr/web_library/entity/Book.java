@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -28,13 +28,13 @@ public class Book {
     @JoinTable(name = "book_genre",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))
-    private Set<Genre> genres = new HashSet<>();
+    private List<Genre> genres = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(name = "book_author",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<Author> authors = new HashSet<>();
+    private List<Author> authors = new ArrayList<>();
 
 
 }

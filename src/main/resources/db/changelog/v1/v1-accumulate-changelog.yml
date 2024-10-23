@@ -2,3 +2,6 @@ databaseChangeLog:
   - include:
       relativeToChangelogFile: true
       file: v1-create-tables-changelog.sql
+  - include:
+      relativeToChangelogFile: true
+      file: v1.1-change-user-table-changelog.sql

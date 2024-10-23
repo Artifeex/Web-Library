@@ -1,12 +1,10 @@
 package com.sandr.web_library.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -22,5 +20,5 @@ public class Author {
     private String name;
 
     @ManyToMany(mappedBy = "authors")
-    Set<Book> books = new HashSet<Book>();
+    List<Book> books = new ArrayList<>();
 }
