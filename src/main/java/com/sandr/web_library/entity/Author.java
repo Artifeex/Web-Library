@@ -6,21 +6,21 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "genre")
-public class Genre {
+@Table(name = "author")
+public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
+
     private String name;
 
-    @ManyToMany(mappedBy = "genres")
+    @ManyToMany(mappedBy = "authors")
     Set<Book> books = new HashSet<Book>();
 }

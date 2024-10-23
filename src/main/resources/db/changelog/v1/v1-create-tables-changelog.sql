@@ -1,3 +1,6 @@
+--liquibase formatted sql
+
+--changeset sandr:1.0
 CREATE TABLE IF NOT EXISTS genre
 (
     id   INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -7,10 +10,16 @@ CREATE TABLE IF NOT EXISTS genre
 CREATE TABLE IF NOT EXISTS book
 (
     id          INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    genre_id    INT REFERENCES genre (id) NOT NULL,
-    name        VARCHAR(128)              NOT NULL,
+    title        VARCHAR(128)              NOT NULL,
     year        INT CHECK ( year >= 100 AND year <= EXTRACT(YEAR FROM CURRENT_DATE) ),
     description TEXT
+);
+
+CREATE TABLE IF NOT EXISTS book_genre
+(
+    book_id  INT REFERENCES book (id),
+    genre_id INT REFERENCES genre (id),
+    PRIMARY KEY (book_id, genre_id)
 );
 
 CREATE TABLE IF NOT EXISTS author
@@ -21,10 +30,9 @@ CREATE TABLE IF NOT EXISTS author
 
 CREATE TABLE IF NOT EXISTS book_author
 (
-    id        INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    book_id   INT REFERENCES book (id)   NOT NULL,
-    author_id INT REFERENCES author (id) NOT NULL,
-    UNIQUE (book_id, author_id)
+    book_id   INT REFERENCES book (id),
+    author_id INT REFERENCES author (id),
+    PRIMARY KEY (book_id, author_id)
 );
 
 CREATE TABLE IF NOT EXISTS users
@@ -34,11 +42,6 @@ CREATE TABLE IF NOT EXISTS users
     email    VARCHAR(128) NOT NULL UNIQUE,
     password VARCHAR(256) NOT NULL
 );
-
--- CREATE TABLE IF NOT EXISTS address(
---     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
---
--- );
 
 CREATE TABLE IF NOT EXISTS library
 (
@@ -69,4 +72,3 @@ CREATE TABLE IF NOT EXISTS borrowed_book
     count       INT CHECK ( count > 0 )          NOT NULL,
     UNIQUE (user_id, lib_book_id)
 );
-

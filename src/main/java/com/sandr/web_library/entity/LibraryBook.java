@@ -5,22 +5,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "genre")
-public class Genre {
+@Table(name = "library_book")
+public class LibraryBook {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String name;
+    private Integer id;
 
-    @ManyToMany(mappedBy = "genres")
-    Set<Book> books = new HashSet<Book>();
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
+
+    @ManyToOne
+    @JoinColumn(name = "library_id")
+    private Library library;
+
+    private Integer count;
 }

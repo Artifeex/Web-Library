@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: 57933
       POSTGRES_DB: web_library
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - web_library_data:/var/lib/postgresql/data
 
