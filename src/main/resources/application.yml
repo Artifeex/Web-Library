@@ -10,6 +10,7 @@ spring:
     password: 57933
     driver-class-name: org.postgresql.Driver
   jpa:
-    hibernate:
-      ddl-auto: validate
-    show-sql: true
+    properties.hibernate:
+      show_sql: true
+      format_sql: true
+      hbm2ddl.auto: validate
