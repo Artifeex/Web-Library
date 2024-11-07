@@ -1,4 +1,4 @@
-package com.sandr.web_library.entity;
+package com.sandr.web_library.domain.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
