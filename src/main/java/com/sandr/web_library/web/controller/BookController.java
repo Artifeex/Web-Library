@@ -3,12 +3,10 @@ package com.sandr.web_library.web.controller;
 import com.sandr.web_library.domain.entity.Book;
 import com.sandr.web_library.domain.exception.BadDto;
 import com.sandr.web_library.service.BookService;
-
 import com.sandr.web_library.web.dto.book.BookDto;
-import com.sandr.web_library.web.dto.genre.GenreDto;
 import com.sandr.web_library.web.dto.validation.OnUpdate;
-import com.sandr.web_library.web.mapper.BookDetailsMapper;
-import com.sandr.web_library.web.mapper.BookMapper;
+import com.sandr.web_library.web.mapper.book.BookDetailsMapper;
+import com.sandr.web_library.web.mapper.book.BookMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -39,7 +37,7 @@ public class BookController {
 
     @PutMapping("/{id}")
     public BookDto updateBook(@PathVariable Integer id, @RequestBody @Validated(OnUpdate.class) BookDto bookDto) {
-        if(!id.equals(bookDto.getId())) {
+        if (!id.equals(bookDto.getId())) {
             throw new BadDto("Id in URL does not match field in dto");
         }
         bookService.update(bookMapper.toEntity(bookDto));

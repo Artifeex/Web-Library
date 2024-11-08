@@ -1,8 +1,11 @@
 package com.sandr.web_library.service.impl;
 
+import com.sandr.web_library.domain.entity.Book;
 import com.sandr.web_library.domain.entity.Library;
+import com.sandr.web_library.domain.entity.LibraryBook;
 import com.sandr.web_library.domain.exception.ResourceNotFoundException;
 import com.sandr.web_library.repository.LibraryRepository;
+import com.sandr.web_library.service.BookService;
 import com.sandr.web_library.service.LibraryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,12 +19,15 @@ import java.util.List;
 public class LibraryServiceImpl implements LibraryService {
 
     private final LibraryRepository libraryRepository;
+    private final BookService bookService;
 
     @Transactional
+    @Override
     public Library create(Library library) {
         return libraryRepository.save(library);
     }
 
+    @Override
     public Library getById(Integer id) {
         return libraryRepository
                 .findById(id)
@@ -29,6 +35,7 @@ public class LibraryServiceImpl implements LibraryService {
     }
 
     @Transactional
+    @Override
     public void update(Library library) {
         Library libraryFromDb = getById(library.getId());
         libraryFromDb.setName(library.getName());
@@ -45,4 +52,5 @@ public class LibraryServiceImpl implements LibraryService {
     public List<Library> getAll() {
         return libraryRepository.findAll();
     }
+
 }

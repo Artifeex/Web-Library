@@ -3,6 +3,7 @@ package com.sandr.web_library.web.controller;
 import com.sandr.web_library.domain.entity.Library;
 import com.sandr.web_library.domain.exception.BadDto;
 import com.sandr.web_library.service.LibraryService;
+import com.sandr.web_library.web.dto.book.BookDto;
 import com.sandr.web_library.web.dto.library.LibraryDto;
 import com.sandr.web_library.web.dto.validation.OnUpdate;
 import com.sandr.web_library.web.mapper.LibraryMapper;
@@ -54,6 +55,5 @@ public class LibraryController {
                 .map(libraryMapper::toDto)
                 .toList();
     }
-
 
 }
